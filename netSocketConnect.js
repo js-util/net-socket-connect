@@ -29,13 +29,6 @@ function isValidPort(port) {
  * @return {net.Socket} that was made, regardless of callback outcome
  */
 function netSocketConnect(remoteport, remotehost, callback = null, connectTimeout = 5000) {
-	// Check remoteport
-	remoteport = parseInt(remoteport);
-	if( !isValidPort(remoteport) ) {
-		triggerCallback(null, `EPARAM - Invalid port number provided - ${remotehost}:${remoteport}`);
-		return;
-	}
-
 	// Callback to trigger, at most once
 	let triggered = false;
 	function triggerCallback(socket, error) {
@@ -49,6 +42,13 @@ function netSocketConnect(remoteport, remotehost, callback = null, connectTimeou
 		if( callback ) {
 			callback(socket, error);
 		}
+	}
+
+	// Check remoteport
+	remoteport = parseInt(remoteport);
+	if( !isValidPort(remoteport) ) {
+		triggerCallback(null, `EPARAM - Invalid port number provided - ${remotehost}:${remoteport}`);
+		return;
 	}
 
 	// Setup the socket connection
