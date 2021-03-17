@@ -1,6 +1,6 @@
 {
 	"name": "@js-util/net-socket-connect",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Given the remote port/host, setup a low level, net.Socket. With callbacks and connect timeout!",
 
 	"keywords": [
